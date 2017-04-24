@@ -12,6 +12,8 @@ $.ajax({
 
 
   var $imgs = $('#container img');                // Store all images
+  var $div = $('#container div');
+  var $li = $('#container li');
   var $buttons = $('#buttons');                   // Store buttons element
   var tagged = {};                                // Create tagged object
 
@@ -53,6 +55,11 @@ $.ajax({
           .hide()                                  // Hide them
           .filter(tagged[tagName])                 // Find ones with this tag
           .show();                                 // Show just those images
+        $div
+          .hide()                                  // Hide them
+          .filter(tagged[tagName])                 // Find ones with this tag  
+          .show();                                 // Show just those images
+
       }
     }).appendTo($buttons);                         // Add to the buttons
   });
@@ -86,5 +93,3 @@ var el_ul = document.getElementById("container");
 
   }     
 }
-
-
