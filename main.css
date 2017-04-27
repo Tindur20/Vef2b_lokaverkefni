@@ -47,6 +47,16 @@ input[type=text] {
 input[type=text]:focus {
     width: 90%;
 }
+
+/*
+======================
+	   	  nav
+======================
+*/
+nav {
+  background-color: #333333;
+  padding-bottom: 2px;
+  text-align: center;}
 /*
 ======================
 */
