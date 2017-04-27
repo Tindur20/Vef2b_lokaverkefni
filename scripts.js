@@ -1,5 +1,5 @@
 "use strict";
-
+//sæki gögn frá apis.is
 $.ajax({
   'url': 'http://apis.is/concerts',
   'type': 'GET',
@@ -9,6 +9,7 @@ $.ajax({
     //sýnir upplýsingar
     show(data);
 
+// data tags filter 
 
   var $lis = $('#container li');                  // Stores all lis elements
   var $buttons = $('#buttons');                   // Store buttons element
@@ -90,7 +91,7 @@ $.ajax({
 
   }
 });
-
+//þetta sækir í element sem er með id container og lætur allt virka
 var el_ul = document.getElementById("container");
 
   function show(data){ 
@@ -104,12 +105,16 @@ var el_ul = document.getElementById("container");
     el_title.className = 'event';
     var el_skrifa = document.createTextNode(gogn[i].eventDateName);
     el_title.appendChild(el_skrifa);
+
     //bý til img html tagið hér og læt myndirnar í það.
     var el_mynd = document.createElement("img");
     el_mynd.src = gogn[i].imageSource;
+
     //bæta við data-tags
     el_li.setAttribute('data-tags', gogn[i].eventHallName);
     el_mynd.setAttribute('data-tags', gogn[i].eventHallName);
+
+    //appendað elementið
     el_li.appendChild(el_mynd);
     el_li.appendChild(el_title);
     el_ul.appendChild(el_li);
