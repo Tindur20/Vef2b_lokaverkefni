@@ -55,10 +55,8 @@ $.ajax({
       }
     }).appendTo($buttons);                         // Add to the buttons
   });
+}
 
-
-
-  }
 });
 
 var el_ul = document.getElementById("container");
@@ -79,7 +77,7 @@ var el_ul = document.getElementById("container");
     el_mynd.src = gogn[i].imageSource;
     //bæta við data-tags
     el_li.setAttribute('data-tags', gogn[i].eventHallName);
-    //el_mynd.setAttribute('data-tags', gogn[i].eventHallName);
+    el_mynd.setAttribute('data-tags', gogn[i].eventHallName);
     el_li.appendChild(el_mynd);
     el_li.appendChild(el_title);
     el_ul.appendChild(el_li);
