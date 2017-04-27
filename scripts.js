@@ -10,15 +10,12 @@ $.ajax({
     show(data);
 
 
-
-  var $imgs = $('#container img');                // Store all images
-  var $div = $('#container div');
-  var $li = $('#container li');
+  var $lis = $('#container li');                  // Stores all lis elements
   var $buttons = $('#buttons');                   // Store buttons element
   var tagged = {};                                // Create tagged object
 
-  $imgs.each(function() {                         // Loop through images and
-    var img = this;                               // Store img in variable
+  $lis.each(function() {                         // Loop through images and
+    var li = this;                               // Store img in variable
     var tags = $(this).data('tags');              // Get this element's tags
 
     if (tags) {                                   // If the element had tags
@@ -26,7 +23,7 @@ $.ajax({
         if (tagged[tagName] == null) {            // If object doesn't have tag
           tagged[tagName] = [];                   // Add empty array to object
         }
-        tagged[tagName].push(img);                // Add the image to the array
+        tagged[tagName].push(li);                // Add the image to the array
       });
     }
   });
@@ -39,7 +36,7 @@ $.ajax({
         .addClass('active')                        // Add the class of active
         .siblings()                                // Get its siblings
         .removeClass('active');                    // Remove active from siblings
-      $imgs.show();                                // Show all images
+      $lis.show();                                // Show all images
     }
   }).appendTo($buttons);                           // Add to buttons
 
@@ -51,15 +48,10 @@ $.ajax({
           .addClass('active')                      // Make clicked item active
           .siblings()                              // Get its siblings
           .removeClass('active');                  // Remove active from siblings
-        $imgs                                      // With all of the images
-          .hide()                                  // Hide them
-          .filter(tagged[tagName])                 // Find ones with this tag
-          .show();                                 // Show just those images
-        $div
+        $lis                                       // With all of the ls elements
           .hide()                                  // Hide them
           .filter(tagged[tagName])                 // Find ones with this tag  
           .show();                                 // Show just those images
-
       }
     }).appendTo($buttons);                         // Add to the buttons
   });
@@ -86,7 +78,8 @@ var el_ul = document.getElementById("container");
     var el_mynd = document.createElement("img");
     el_mynd.src = gogn[i].imageSource;
     //bæta við data-tags
-    el_mynd.setAttribute('data-tags', gogn[i].eventHallName);
+    el_li.setAttribute('data-tags', gogn[i].eventHallName);
+    //el_mynd.setAttribute('data-tags', gogn[i].eventHallName);
     el_li.appendChild(el_mynd);
     el_li.appendChild(el_title);
     el_ul.appendChild(el_li);
