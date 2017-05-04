@@ -57,6 +57,41 @@ nav {
   background-color: #333333;
   padding-bottom: 2px;
   text-align: center;}
+
+  nav {
+  max-height: 0;
+  overflow: hidden;
+}
+
+#menu-check{
+	display: none;
+}
+
+input:checked ~ nav{
+	max-height: 500px;
+}
+
+input:checked + label {
+  color: orange;
+  }
+
+label,
+ul {
+
+  border-radius: 6px;
+}
+
+label{
+	  color: #0087cc;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  padding: 5px 9px;
+}
+
+label:hover {
+  color: #ff7b29;
+}
 /*
 ======================
 */
@@ -72,7 +107,7 @@ body {
 header {
   background-color: #333333;
   margin: 0 0 40px 0;
-  padding: 10px 0 0 0;
+  padding: 10px 0 10px; 0;
   min-height: 50px;
   text-align: center;}
 
