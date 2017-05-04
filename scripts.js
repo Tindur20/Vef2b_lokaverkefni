@@ -118,6 +118,22 @@ var el_ul = document.getElementById("container");
     el_li.appendChild(el_mynd);
     el_li.appendChild(el_title);
     el_ul.appendChild(el_li);
+    moreInfo(el_li,data[i]);
 
-  }     
+   }
+   function moreInfo(el_li, data){
+  //bæta við info
+   var el_info = document.createElement("div");
+    for (variable in data){
+      if (variable !== "imageSource" && variable !== "eventDateName") {
+
+        var el_p = document.createElement('p');
+        var el_text = document.createTextNode(data[variable]);
+        el_p.appendChild(el_text);
+        el_info.appendChild(el_p);
+      }
+    }
+    el_info.className= "info";
+    el_li.appendChild(el_info);
+  }
 }
