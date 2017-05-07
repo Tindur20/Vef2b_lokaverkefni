@@ -10,7 +10,6 @@ $.ajax({
     show(data);
 
 // data tags filter 
-
   var $lis = $('#container li');                  // Stores all lis elements
   var $buttons = $('#buttons');                   // Store buttons element
   var tagged = {};                                // Create tagged object
@@ -30,7 +29,7 @@ $.ajax({
   });
 
   $('<button/>', {                                 // Create empty button
-    text: 'Show All',                              // Add text 'show all'
+    text: 'Allir atburðir',                              // Add text 'show all'
     class: 'active',                               // Make it active
     click: function() {                            // Add onclick handler to
       $(this)                                      // Get the clicked on button
@@ -58,17 +57,17 @@ $.ajax({
   });
 
 // Search Box
-
+  var $element = $('#container .flokka');
   var $search = $('#filter-search');      // Get the input element
   var cache = [];                         // Create an array called cache
 
   $lis.each(function() {                 // For each image
     cache.push({                          // Add an object to the cache array
       element: this,                      // This image
-      text: this.alt.trim().toLowerCase() // Its alt text (lowercase trimmed)
+      text: this.innerHTML.trim().toLowerCase() // Its alt text (lowercase trimmed)
     });
   });
-
+//function sem filterar
   function filter() {                     // Declare filter() function
     var query = this.value.trim().toLowerCase();  // Get the query
     cache.forEach(function(li) {         // For each entry in cache pass image 
@@ -81,6 +80,7 @@ $.ajax({
       li.element.style.display = index === -1 ? 'none' : '';  // Show / hide
     });
   }
+ //ef browserinn supportar oninput eða inout þá er það notað
 
   if ('oninput' in $search[0]) {          // If browser supports input event
     $search.on('input', filter);          // Use input event to call filter()
@@ -118,22 +118,31 @@ var el_ul = document.getElementById("container");
     el_li.appendChild(el_mynd);
     el_li.appendChild(el_title);
     el_ul.appendChild(el_li);
-    moreInfo(el_li,data[i]);
+    el_li.className+=" flokka"
+    container.appendChild(el_li);
+    more_info(el_li,data[i]);
 
    }
-   function moreInfo(el_li, data){
-  //bæta við info
-   var el_info = document.createElement("div");
-    for (variable in data){
-      if (variable !== "imageSource" && variable !== "eventDateName") {
+  function more_info(el_li, data){
+    //bæta við auka info
+    var el_info = document.createElement("ul");
 
-        var el_p = document.createElement('p');
+    for (variable in data) {
+      //data[i]
+      if (variable !== "imageSource" && variable !== "eventDateName" && variable !== "dateOfShow") {
+        var el_li2 = document.createElement('li');
         var el_text = document.createTextNode(data[variable]);
-        el_p.appendChild(el_text);
-        el_info.appendChild(el_p);
+        el_li2.appendChild(el_text);
+        el_info.appendChild(el_li2);
       }
-    }
-    el_info.className= "info";
-    el_li.appendChild(el_info);
+      else if (variable === "dateOfShow") {
+        var dagsetning = data[variable];
+        var breytt = moment(dagsetning).format("D. MMMM YYYY, h:mm a");
+        var el_li2 = document.createElement('li');
+        var el_text = document.createTextNode(breytt);
+        el_li2.appendChild(el_text);
+        el_info.appendChild(el_li2);
+      }
   }
+}
 }
