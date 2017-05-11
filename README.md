@@ -1,6 +1,6 @@
 # Sigsteinn Snær
 
-[Linkur á vefsíðuna](http://tsuts.tskoli.is/2t/2811992349/vef2b/lokaverkefni_2/index.html)
+[Linkur á vefsíðuna](http://tsuts.tskoli.is/2t/2811992349/vef2b/lokaverkefni/index.html)
 
 Síðasta verkefni í áfanganum VEF2B3U, í því mun ég fyljga leið B samkvæmt verkefnarlýsingu.
 
