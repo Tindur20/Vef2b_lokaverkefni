@@ -106,6 +106,17 @@ var el_ul = document.getElementById("container");
     var el_skrifa = document.createTextNode(gogn[i].eventDateName);
     el_title.appendChild(el_skrifa);
 
+    //bý hér til div tag til að láta meira texta inn sem er dateOfShow.     "."
+    var el_title2 = document.createElement("div");
+    el_title2.className = 'event';
+    var el_skrifa2 = document.createTextNode(gogn[i].dateOfShow);
+
+    var el_title3 = document.createElement("div");
+    var el_skrifa3 = document.createTextNode(gogn[i].eventHallName);
+
+    el_title2.appendChild(el_skrifa2);
+    el_title3.appendChild(el_skrifa3);
+
     //bý til img html tagið hér og læt myndirnar í það.
     var el_mynd = document.createElement("img");
     el_mynd.src = gogn[i].imageSource;
@@ -117,32 +128,9 @@ var el_ul = document.getElementById("container");
     //appendað elementið
     el_li.appendChild(el_mynd);
     el_li.appendChild(el_title);
+    el_li.appendChild(el_title2);
+    el_li.appendChild(el_title3);
     el_ul.appendChild(el_li);
-    el_li.className+=" flokka"
-    container.appendChild(el_li);
-    more_info(el_li,data[i]);
 
    }
-  function more_info(el_li, data){
-    //bæta við auka info
-    var el_info = document.createElement("ul");
-
-    for (variable in data) {
-      //data[i]
-      if (variable !== "imageSource" && variable !== "eventDateName" && variable !== "dateOfShow") {
-        var el_li2 = document.createElement('li');
-        var el_text = document.createTextNode(data[variable]);
-        el_li2.appendChild(el_text);
-        el_info.appendChild(el_li2);
-      }
-      else if (variable === "dateOfShow") {
-        var dagsetning = data[variable];
-        var breytt = moment(dagsetning).format("D. MMMM YYYY, h:mm a");
-        var el_li2 = document.createElement('li');
-        var el_text = document.createTextNode(breytt);
-        el_li2.appendChild(el_text);
-        el_info.appendChild(el_li2);
-      }
-  }
-}
-}
+ }
